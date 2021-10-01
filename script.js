@@ -40,11 +40,6 @@ var output8 = document.querySelector(".output8");
 var input9 = document.querySelector(".input9");
 var output9 = document.querySelector(".output9");
 
-var past = document.querySelector ("#past");
-var present = document.querySelector ("#present");
-var future = document.querySelector ("#future");
-
-    
 
 saveBtn1.addEventListener("click", save1);
 
@@ -145,4 +140,33 @@ function save9() {
 	localStorage.setItem("content9", input9.value);
 	
 	output9.textContent = input9.value;
+}
+
+
+var row = document.querySelector(".description");
+var past = document.querySelector (".past");
+var present = document.querySelector (".present");
+var future = document.querySelector (".future");
+
+
+
+for (let i = 0; i < 9; i++) {
+
+  var currentTime = moment().format("H");
+  var currentRow = document.querySelector(".row" + (i + 1));
+  var rowTime = 9 + i;
+  
+  if (rowTime < currentTime) {
+    currentRow.classList.add("past");
+  }
+
+  if (rowTime == currentTime) {
+    currentRow.classList.add("present");
+  }
+  
+  if (rowTime > currentTime) {
+    currentRow.classList.add("future");
+  }
+
+  
 }
